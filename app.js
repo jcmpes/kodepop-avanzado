@@ -11,17 +11,7 @@ var app = express();
 
 // db connector
 // Import the mongoose module
-const mongoose = require('mongoose');
-
-// Set up default mongoose connection
-mongoose.connect('mongodb://localhost/keepads', {useNewUrlParser: true, useUnifiedTopology: true});
-
-//Get the default connection
-var db = mongoose.connection;
-
-// Bind connection to error event (to get notification of connection errors)
-db.on('error', console.error.bind(console, 'Error de conexión con MongoDB: '))
-
+require('./lib/connectMongoose')
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
