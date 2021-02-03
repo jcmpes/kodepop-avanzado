@@ -12,9 +12,20 @@
     <section>
       <h2>Lista de anuncios</h2>
 
-      <ul>
+      <ul class="item-list">
         <% for (ad of ads) { %>
-          <li><%= ad.title %></li>
+          <li>
+            <div class="item">
+              <div class="image">
+                <img src="<%= ad.img %>" alt="">
+              </div>
+              <div class="details">
+                <h3><%= ad.title %></h3>
+                <h3 class="price"><%= ad.price %> €</h3>
+                <p><%= ad.description %></p>
+              </div>             
+            </div>
+          </li>
         <% } %>
       </ul>
     </section>

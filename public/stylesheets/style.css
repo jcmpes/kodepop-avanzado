@@ -1,3 +1,7 @@
+* {
+  margin: 0;
+}
+
 body {
   padding: 50px;
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
@@ -5,4 +9,39 @@ body {
 
 a {
   color: #00B7FF;
+}
+
+section {
+  margin-top: 1.5rem;
+}
+
+.item-list { 
+  list-style: none;
+}
+
+.item {
+  display: flex;
+  
+}
+
+.item > .image > img {
+  max-width: 300px;
+  max-height: 150px;
+}
+
+.item > .details {
+  display: flex;
+  flex-direction: column;
+  margin: 1rem;
+}
+
+.item > .details > h3 {
+  margin-bottom: .5rem;
+}
+
+.item > .details > .price {
+  font-size: 1.5rem;
+}
+
+.item > .details > p {
 }
