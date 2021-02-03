@@ -7,24 +7,24 @@ const Ad = require('./models/Ad')
 const newAds = [
     {
         title: "Amplificador",
-        description: "Vendo este fantástico aplificdor vintage de 30w por canal a 8Ω",
+        description: "Vendo este fantástico amplificador vintage de 30w por canal a 8Ω",
         price: 100,
         type: "Venta",
-        img: "/public/images/amp.jpg",
+        img: "/images/amp.jpg",
         tags: ["Electrónica", "Imagen y sonido"]
     }, {
         title: "Ratón inalámbrico",
-        descripción: "Apple magic mouse 2 usado en perfectas condiciones",
+        description: "Apple magic mouse 2 usado en perfectas condiciones",
         price: 50,
         type: "Venta",
-        img: "/public/images/mouse.jpg",
+        img: "/images/mouse.jpg",
         tags: ["Electrónica", "Ordenadores"]
     }, {
         title: "Mesa de terraza con 4 sillas",
-        descripción: "Maravilloso mueble cervecero con respaldo de tectake que le dará un encanto especial a su jardín. Banco y mesa fabricados en madera resistente y entusiasmar con su óptica natural y elegante. Aspecto a destacar: Al contrario de otros muebles cerveceros este en particular tiene un respaldo espectacular. De manera que ofrece mucho más confort y comodidad cuando uno celebra. Llévese hoy a casa este mueble cervecero tan resistente con respaldo de tectake.",
+        description: "Maravilloso mueble cervecero con respaldo de tectake que le dará un encanto especial a su jardín. Banco y mesa fabricados en madera resistente y entusiasmar con su óptica natural y elegante. Aspecto a destacar: Al contrario de otros muebles cerveceros este en particular tiene un respaldo espectacular. De manera que ofrece mucho más confort y comodidad cuando uno celebra. Llévese hoy a casa este mueble cervecero tan resistente con respaldo de tectake.",
         price: 125,
         type: "Venta",
-        img: "/public/images/mesa.jpg",
+        img: "/images/mesa.jpg",
         tags: ["Electrónica", "Ordenadores"]
     }
 
