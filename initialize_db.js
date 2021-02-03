@@ -49,7 +49,7 @@ async function initDatabase() {
         // Add sample data
         Ad.create(newAds).then(result => {
             console.log('Added', result);
-            console.log('DYour databasegit a has been initializad gracefully')
+            console.log('Your database has been initializad gracefully')
             process.exit(0);
         }).catch(err => {
             console.log("Error adding data", err)
