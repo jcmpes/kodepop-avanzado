@@ -12,6 +12,7 @@ const Ad = require('../../models/Ad');
  */
 router.get('/', async function(req, res, next) {
     try {
+        const type = req.query.type;
         const filter = {};
         if (type) {
             filter.type = type;

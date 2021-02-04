@@ -13,8 +13,8 @@ const adSchema = mongoose.Schema({
 });
 
 // Mongoose model static method
-adSchema.statics.filterAndList = function(limit, skip) {
-    const query = Ad.find();
+adSchema.statics.filterAndList = function(filter, limit, skip) {
+    const query = Ad.find(filter);
     query.limit(limit);
     query.skip(skip);
     return query.exec();
