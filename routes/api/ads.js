@@ -9,6 +9,9 @@ const Ad = require('../../models/Ad');
  * 
  * Lista de agentes con paginación
  * GET /api/ads?skip=10&limit=10
+ * 
+ * Lista de anuncios con filtros
+ * GET /api/ads?type=Venta
  */
 router.get('/', async function(req, res, next) {
     try {
@@ -20,6 +23,9 @@ router.get('/', async function(req, res, next) {
         const limit = parseInt(req.query.limit);
         const skip = parseInt(req.query.skip);
         const result = await Ad.filterAndList(filter, limit, skip);
+        if(result[0] == null) {
+            return res.status(404).json({ error: 'ads not found'});
+        }
         res.json(result);
     } catch (err) {
         next(err);
@@ -27,7 +33,22 @@ router.get('/', async function(req, res, next) {
 });
 
 /**
- * 
+ * Detalle de anuncio
+ * GET /api/ads/:id
  */
+router.get('/:id', async(req, res, next) => {
+    try {
+        const _id = req.params.id;
+        const ad = await Ad.findOne({ _id: _id });
+        if(!ad) {
+            res.status(404).json({ error: 'ad not found'});
+            return;
+        }
+        res.json({ result: ad })
+    } catch (err) {
+        next(err);
+    }
+})
+
 
 module.exports = router;
