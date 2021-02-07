@@ -11,6 +11,9 @@ It is written by Juan Carlos Marcos using node and mongoDB.
 Run this command in the terminal to remove the collections and insert new test data:
 `node initialize_db.js`
 
+## EJS view:
+The ejs view is implemented via a html template file with ejs syntax.
+You can list all the ads and also apply a price filter selecting a price range with a dual slider.
 
 ## API methods:
 

@@ -1,5 +1,7 @@
 // Create slider
 const slider = document.getElementById('slider');
+const START_MIN_PRICE = 20;
+const START_MAX_PRICE = 80;
 
 // Get params to create slider
 // according to query string params
@@ -19,7 +21,7 @@ const qs = (function(a) {
 
 // Actually create the slider
 noUiSlider.create(slider, {
-  start: [qs['gt'] || 20, qs['lt'] || 80],
+  start: [qs['gt'] || START_MIN_PRICE, qs['lt'] || START_MAX_PRICE],
   snap: true,
   connect: true,
   range: {
@@ -40,15 +42,15 @@ const snapValues = [
 ];
 
 window.onload = () => {
-  snapValues[0].innerHTML = qs['gt'];
-  snapValues[1].innerHTML = qs['lt'];
+  snapValues[0].innerHTML = qs['gt'] || START_MIN_PRICE;
+  snapValues[1].innerHTML = qs['lt'] || START_MAX_PRICE;
 };
 
 const linkFilter = document.querySelector('#link-filter');
 
 slider.noUiSlider.on('update', function(values, handle) {
   snapValues[handle].innerHTML = values[handle];
-  inkFilter.href = `/filters?lt=${values[1]}&gt=${values[0]}`;
+  linkFilter.href = `/filters?lt=${values[1]}&gt=${values[0]}`;
 });
 
 // Make GET request from slider values

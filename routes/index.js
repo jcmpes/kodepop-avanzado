@@ -1,40 +1,39 @@
-var express = require('express');
-var router = express.Router();
+const express = require('express');
+const router = express.Router();
 
 const MAX_PRICE = 1000000;
 
-const Ad = require('../models/Ad')
+const Ad = require('../models/Ad');
 
 /* GET home page. */
 router.get('/', async function(req, res, next) {
   await Ad.find((err, result) => {
-    if(err) {
+    if (err) {
       next(err);
-      return 
+      return;
     }
-    res.render('index', { title: 'Keepads', ads: result });
-  })
+    res.render('index', {title: 'Keepads', ads: result});
+  });
 });
 
 /**
- * GET ads filtered by price in the ejs view 
+ * GET ads filtered by price in the ejs view
  * GET /filters?lt=100&gt=40
  */
 router.get('/filters', async function(req, res, next) {
-    const max = req.query.lt;
-    const min = req.query.gt;
-    const skip = req.query.skip;
-    const limit = req.query.limit;
-    await Ad
-            .find(
-                  { price: { $lt: max || MAX_PRICE, $gt: min || 0} },
-                  )
-            .then(result => {
-              res.render('index', { title: 'Keepads', ads: result});
-            })
-            .catch(err => {
-              next(err)
-            });
+  const max = req.query.lt;
+  const min = req.query.gt;
+  await Ad
+      .find(
+          {price: {$lt: max || MAX_PRICE, $gt: min || 0}},
+          // TODO: no he conseguido encadenar varios filtros en este find()
+      )
+      .then((result) => {
+        res.render('index', {title: 'Keepads', ads: result});
+      })
+      .catch((err) => {
+        next(err);
+      });
 });
 
 module.exports = router;
