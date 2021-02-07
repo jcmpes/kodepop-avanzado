@@ -10,15 +10,22 @@ const Ad = require('../../models/Ad');
  * Lista de agentes con paginación
  * GET /api/ads?skip=10&limit=10
  * 
- * Lista de anuncios con filtros
+ * Lista de anuncios con filtros (compra/venta)
  * GET /api/ads?type=Venta
+ * 
+ * Lista de anuncios con filtros (tags)
+ * GET /api/ads?tag=Electrónica
  */
 router.get('/', async function(req, res, next) {
     try {
+        const tag = req.query.tag;
         const type = req.query.type;
         const filter = {};
         if (type) {
             filter.type = type;
+        }
+        if (tag) {
+            filter.tags = tag;
         }
         const limit = parseInt(req.query.limit);
         const skip = parseInt(req.query.skip);

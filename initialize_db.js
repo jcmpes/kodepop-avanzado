@@ -11,23 +11,29 @@ const newAds = [
         price: 100,
         type: "Venta",
         img: "/images/amp.jpg",
-        tags: ["Electrónica", "Imagen y sonido"]
+        tags: ["Electronica", "Imagen y sonido"]
     }, {
         title: "Ratón inalámbrico",
         description: "Apple magic mouse 2 usado en perfectas condiciones",
         price: 50,
         type: "Venta",
         img: "/images/mouse.jpg",
-        tags: ["Electrónica", "Ordenadores"]
+        tags: ["Electronica", "Ordenadores"]
     }, {
         title: "Mesa de terraza con 4 sillas",
         description: "Maravilloso mueble cervecero con respaldo de tectake que le dará un encanto especial a su jardín. Banco y mesa fabricados en madera resistente y entusiasmar con su óptica natural y elegante. Aspecto a destacar: Al contrario de otros muebles cerveceros este en particular tiene un respaldo espectacular. De manera que ofrece mucho más confort y comodidad cuando uno celebra. Llévese hoy a casa este mueble cervecero tan resistente con respaldo de tectake.",
         price: 125,
         type: "Venta",
         img: "/images/mesa.jpg",
-        tags: ["Electrónica", "Ordenadores"]
+        tags: ["Electronica", "Ordenadores"]
+    }, {
+        title: "iPhone X 256GB",
+        description: "Busco iPhoneX de 256GB libre.",
+        price: 350,
+        type: "Compra",
+        img: "/images/iPhone.jpeg",
+        tags: ["Electronica", "Moviles"]
     }
-
 ];
 
 
