@@ -46,7 +46,7 @@ Will return documents with title containing the string provided
 
 #### sort:
 `GET /api/ads?sort=-price`
-Will return documents sorted by price, high to low.
+Will return documents sorted by price, high to low
 
 
 ### GET /api/tags
@@ -58,3 +58,6 @@ Get list of all tags
 `POST /api/ads`
 Create a new ad sending the details in the body as x-www-form-urlencoded
 
+### DELETE /api/agentes:id
+`DELETE /api/ads/6020688e2ba28a3b851b08bd`
+Removes the document with _id 6020688e2ba28a3b851b08bd from the database
