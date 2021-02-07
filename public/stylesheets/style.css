@@ -11,9 +11,23 @@ a {
   color: #00B7FF;
 }
 
+.container {
+  display: grid;
+  grid-template-columns: 75% 25%;
+}
+
 section {
   margin-top: 1.5rem;
 }
+
+.ads-list {
+  grid-column-start: 1;
+}
+
+.filters-list {
+  grid-column-start: 2;
+}
+
 
 .item-list { 
   list-style: none;

@@ -9,25 +9,40 @@
       <h1><%= title %></h1>
       <p>Welcome to <%= title %></p>
     </header>
-    <section>
-      <h2>Lista de anuncios</h2>
-
-      <ul class="item-list">
-        <% for (ad of ads) { %>
-          <li>
-            <div class="item">
-              <div class="image">
-                <img src="<%= ad.img %>" alt="">
-              </div>
-              <div class="details">
-                <h3><%= ad.title %></h3>
-                <h3 class="price"><%= ad.price %> €</h3>
-                <p><%= ad.description %></p>
-              </div>             
-            </div>
-          </li>
+    <div class="container">
+      <section>
+        <% if(ads[0] == null) {%>
+          <p>We have looked everywhere but no ads were found</p>
+          <a href="/">Return home</a>
         <% } %>
-      </ul>
-    </section>
+        <div class="ads-list">
+          
+          <h2>Lista de anuncios</h2>
+
+          <ul class="item-list">
+            <% for (ad of ads) { %>
+              <li>
+                <div class="item">
+                  <div class="image">
+                    <img src="<%= ad.img %>" alt="">
+                  </div>
+                  <div class="details">
+                    <h3><%= ad.title %></h3>
+                    <h3 class="price"><%= ad.price %> €</h3>
+                    <p><%= ad.description %></p>
+                  </div>             
+                </div>
+              </li>
+            <% } %>
+          </ul>
+        </div>
+      </section>
+      <section>
+        <div class="filters-list">
+          <h2>Filtros</h2>
+          <a href=""></a>
+        </div>
+      </section>
+    </div>
   </body>
 </html>
