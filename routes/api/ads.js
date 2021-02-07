@@ -18,6 +18,7 @@ const Ad = require('../../models/Ad');
  */
 router.get('/', async function(req, res, next) {
     try {
+        const title = req.query.title;
         const tag = req.query.tag;
         const type = req.query.type;
         const filter = {};
@@ -26,6 +27,9 @@ router.get('/', async function(req, res, next) {
         }
         if (tag) {
             filter.tags = tag;
+        }
+        if (title) {
+            filter.title = new RegExp(title, "i");
         }
         const limit = parseInt(req.query.limit);
         const skip = parseInt(req.query.skip);
