@@ -28,8 +28,6 @@ router.get('/filters', async function(req, res, next) {
     await Ad
             .find(
                   { price: { $lt: max || MAX_PRICE, $gt: min || 0} },
-                  { skip: skip || 0 },
-                  { limit: limit || 0 },
                   )
             .then(result => {
               res.render('index', { title: 'Keepads', ads: result});
