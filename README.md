@@ -14,7 +14,7 @@ Run this command in the terminal to remove the collections and insert new test d
 ## EJS view:
 The ejs view is implemented via a html template file with ejs syntax.
 You can list all the ads and also apply a price filter selecting a price range with a dual slider.
-The slider has been created by https://refreshless.com/nouislider/
+The slider has been created by https://refreshless.com/nouislider/ .
 You can also apply a type-of-ad filter to show only buy or sell ads.
 
 
