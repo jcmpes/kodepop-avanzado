@@ -24,11 +24,19 @@ section {
   grid-column-start: 1;
 }
 
+.ads-list > h2 {
+  margin-bottom: 2rem;
+}
+
 .filters-list {
   grid-column-start: 2;
 }
 
-.filters-list > h3, .filters-list > select {
+.filters-list > h3 {
+  margin-top: 2rem;
+}
+
+.filters-list > select {
   margin-top: 1rem;
 }
 
