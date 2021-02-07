@@ -21,12 +21,14 @@ router.get('/', async function(req, res, next) {
 router.get('/filters', async function(req, res, next) {
     const max = req.query.lt;
     const min = req.query.gt;
-
+    const skip = req.query.skip;
+    const limit = req.query.limit;
     await Ad
-            .find({ 
-                    price: { $lt: max, $gt: min },
-
-                  })
+            .find(
+                  { price: { $lt: max, $gt: min } },
+                  { skip: skip || 0 },
+                  { limit: limit || 0 },
+                  )
             .then(result => {
               res.render('index', { title: 'Keepads', ads: result});
             })
