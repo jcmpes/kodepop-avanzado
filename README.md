@@ -4,6 +4,35 @@ Keepads is a simple project for the Introduction to Backend module of Keepcondin
 It is an API to store and read adverts of a hypothetical ads service.
 It is written by Juan Carlos Marcos using node and mongoDB.
 
+## Run db:
+`./bin/mongod --dbpath ./data/db`
+
 ## Initialize db:
 Run this command in the terminal to remove the collections and insert new test data:
 `node initialize_db.js`
+
+
+## API methods:
+
+### GET /api/ads:
+Get list of ads with opcional parameters:
+
+#### filter by entries for pagination:
+`GET /api/ads?skip=10&limit=10`
+Will return documents 11 up until 21.
+
+#### filter by type (compra or venta)
+`GET /api/ads?type=Venta`
+Will return only documents of type "Venta".
+
+#### filter by tag:
+`GET /api/ads?tag=Electronica`
+Will return documents with tag "Electronica".
+
+#### filter by price:
+`GET /api/ads?price[$gte]=300&price[$lt]=400`
+Will return documents with price between 300 and 399.99 .
+
+#### sort:
+`GET /api/ads?sort=-price`
+Will return documents sorted by price, high to low.

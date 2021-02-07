@@ -15,10 +15,13 @@ const Ad = require('../../models/Ad');
  * GET /api/ads?type=Venta
  * 
  * -> tag
- * GET /api/ads?tag=Electrónica
+ * GET /api/ads?tag=Electronica
  * 
  * -> precio
  * GET /api/ads?price[$gte]=300&price[$lt]=400
+ * 
+ * Lista de anuncios ordenada:
+ * GET /api/ads?sort=price
  * 
  */
 router.get('/', async function(req, res, next) {
@@ -42,7 +45,8 @@ router.get('/', async function(req, res, next) {
         }
         const limit = parseInt(req.query.limit);
         const skip = parseInt(req.query.skip);
-        const result = await Ad.filterAndList(filter, limit, skip);
+        const sort = req.query.sort;
+        const result = await Ad.filterAndList(filter, limit, skip, sort);
         if(result[0] == null) {
             return res.status(404).json({ error: 'ads not found'});
         }
