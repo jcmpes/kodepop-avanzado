@@ -15,6 +15,7 @@ Run this command in the terminal to remove the collections and insert new test d
 ## API methods:
 
 ### GET /api/ads:
+`/api/ads?skip=0&limit=10&type=Venta&tag=Electronica&price[$gte]=50&price[$lte]=125&sort=-price`
 Get list of ads with opcional parameters:
 
 #### filter by entries for pagination:
@@ -30,9 +31,10 @@ Will return only documents of type "Venta".
 Will return documents with tag "Electronica".
 
 #### filter by price:
-`GET /api/ads?price[$gte]=300&price[$lt]=400`
-Will return documents with price between 300 and 399.99 .
+`GET /api/ads?price[$gte]=50&price[$lte]=150`
+Will return documents with price between 50 and 150.
 
 #### sort:
 `GET /api/ads?sort=-price`
 Will return documents sorted by price, high to low.
+
