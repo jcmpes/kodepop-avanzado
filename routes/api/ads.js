@@ -92,8 +92,21 @@ router.post('/', async (req, res, next) => {
     }
 })
 
+/**
+ * Eliminar un anuncio
+ * DELETE /api/agentes:id
+ */
+router.delete('/:id', async(req, res, next) => {
+    try {
+        const _id = req.params.id;
 
+        await Ad.deleteOne({ _id: _id });
 
+        res.json();
+    } catch (err) {
+        next(err)
+    }
+})
 
 
 module.exports = router;
