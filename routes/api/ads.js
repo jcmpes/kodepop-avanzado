@@ -74,5 +74,26 @@ router.get('/:id', async(req, res, next) => {
   }
 })
 
+/** 
+ * Crear un anuncio (body)
+ * POST /api/ads
+ */
+router.post('/', async (req, res, next) => {
+    try {
+        const adData = req.body
+        
+        const ad = new Ad(adData);
+
+        const newAd = await ad.save();
+
+        res.status(201).json({ result: newAd });
+    } catch (err) {
+        next(err)
+    }
+})
+
+
+
+
 
 module.exports = router;
