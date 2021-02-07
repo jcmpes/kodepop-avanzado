@@ -1,7 +1,8 @@
 const mongoose = require('mongoose');
 
-// Import the model
+// Import the models
 const Ad = require('./models/Ad');
+const Tag = require('./models/Tag')
 
 // Create sample data
 const newAds = [
@@ -28,7 +29,7 @@ const newAds = [
     price: 125,
     type: 'Venta',
     img: '/images/mesa.jpg',
-    tags: ['Electronica', 'Ordenadores'],
+    tags: ['Muebles', 'Jardin'],
   }, {
     title: 'iPhone X 256GB',
     description: 'Busco iPhoneX de 256GB libre.',
@@ -38,6 +39,14 @@ const newAds = [
     tags: ['Electronica', 'Moviles'],
   },
 ];
+
+const newTags = [
+  { tag: 'Electronica' },
+  { tag: 'Ordenadores' },
+  { tag: 'Moviles' },
+  { tag: 'Muebles' },
+  { tag: 'Jardin' }
+]
 
 async function initDatabase() {
   try {
@@ -54,7 +63,20 @@ async function initDatabase() {
         },
     );
 
+    await mongoose.connection.dropCollection(
+      'tags',
+      function() {
+        console.log('Collection dropped');
+      },
+  );
+
     // Add sample data
+    Tag.create(newTags).then((result) => {
+      console.log('Added', result);
+    }).catch((err) => {
+      console.log('Error adding data', err);
+    });
+    
     Ad.create(newAds).then((result) => {
       console.log('Added', result);
       console.log('Your database has been initializad gracefully');
