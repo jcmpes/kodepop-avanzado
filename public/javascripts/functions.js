@@ -35,19 +35,29 @@ noUiSlider.create(slider, {
   },
 });
 
-// Update min and max values
+// Make prices and type selector add filters to prospect 
+// GET request by adding query params to Submit anchor link 
+const linkFilter = document.querySelector('#link-filter');
+const select = document.querySelector('#select');
 const snapValues = [
   document.querySelector('#slider-snap-value-lower'),
   document.querySelector('#slider-snap-value-upper'),
 ];
 
+// Control behaviour of select field on page load
+// Control behaviour of slider on page load
 window.onload = () => {
+  select.value = qs["type"] || "Venta";
   snapValues[0].innerHTML = qs['gt'] || START_MIN_PRICE;
   snapValues[1].innerHTML = qs['lt'] || START_MAX_PRICE;
 };
 
-const linkFilter = document.querySelector('#link-filter');
+// Update selected type of ads
+select.addEventListener('change', () => {
+  linkFilter.href += `&type=${select.value}`;
+})
 
+// Update min and max price values
 slider.noUiSlider.on('update', function(values, handle) {
   snapValues[handle].innerHTML = values[handle];
   linkFilter.href = `/filters?lt=${values[1]}&gt=${values[0]}`;

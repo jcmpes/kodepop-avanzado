@@ -28,6 +28,13 @@ section {
   grid-column-start: 2;
 }
 
+.filters-list > h3, .filters-list > select {
+  margin-top: 1rem;
+}
+
+.filters-list > .btn-submit {
+  margin-top: 2rem;
+}
 
 .item-list { 
   list-style: none;
@@ -35,7 +42,6 @@ section {
 
 .item {
   display: flex;
-  
 }
 
 .item > .image > img {

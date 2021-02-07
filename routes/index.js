@@ -23,11 +23,13 @@ router.get('/', async function(req, res, next) {
 router.get('/filters', async function(req, res, next) {
   const max = req.query.lt;
   const min = req.query.gt;
+  const type = req.query.type;
+
   await Ad
-      .find(
-          {price: {$lt: max || MAX_PRICE, $gt: min || 0}},
-          // TODO: no he conseguido encadenar varios filtros en este find()
-      )
+      .find({
+          price: {$lt: max || MAX_PRICE, $gt: min || 0},
+          type: type || "Venta",
+      })
       .then((result) => {
         res.render('index', {title: 'Keepads', ads: result});
       })
