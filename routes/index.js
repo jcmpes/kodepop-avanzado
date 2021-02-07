@@ -1,6 +1,8 @@
 var express = require('express');
 var router = express.Router();
 
+const MAX_PRICE = 1000000;
+
 const Ad = require('../models/Ad')
 
 /* GET home page. */
@@ -25,7 +27,7 @@ router.get('/filters', async function(req, res, next) {
     const limit = req.query.limit;
     await Ad
             .find(
-                  { price: { $lt: max, $gt: min } },
+                  { price: { $lt: max || MAX_PRICE, $gt: min || 0} },
                   { skip: skip || 0 },
                   { limit: limit || 0 },
                   )

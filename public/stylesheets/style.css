@@ -57,5 +57,16 @@ section {
   font-size: 1.5rem;
 }
 
-.item > .details > p {
+#slider {
+  margin: 1rem;
+}
+
+#slider-snap-value-lower::before {
+  content: 'min: ';
+  font-weight: bold;
+}
+
+#slider-snap-value-upper::before {
+  content: 'max: ';
+  font-weight: bold;
 }
