@@ -4,21 +4,21 @@ const mongoose = require('mongoose');
 
 // Define schema
 const adSchema = mongoose.Schema({
-    title: { type: String },
-    description: String,
-    price: Number,
-    type: String,
-    img: String,
-    tags: [String]
+  title: { type: String },
+  description: String,
+  price: Number,
+  type: String,
+  img: String,
+  tags: [String]
 });
 
 // Mongoose model static method
 adSchema.statics.filterAndList = function(filter, limit, skip, sort) {
-    const query = Ad.find(filter);
-    query.limit(limit);
-    query.skip(skip);
-    query.sort(sort);
-    return query.exec();
+  const query = Ad.find(filter);
+  query.limit(limit);
+  query.skip(skip);
+  query.sort(sort);
+  return query.exec();
 };
 
 // Create model object, specify collection and schema
