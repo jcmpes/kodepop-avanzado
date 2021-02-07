@@ -40,6 +40,10 @@ Will return documents with tag "Electronica".
 `GET /api/ads?price[$gte]=50&price[$lte]=150`
 Will return documents with price between 50 and 150.
 
+#### filter by name:
+`GET /api/ads?title=iPhone`
+Will return documents with title containing the string provided
+
 #### sort:
 `GET /api/ads?sort=-price`
 Will return documents sorted by price, high to low.
