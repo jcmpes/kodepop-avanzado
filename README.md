@@ -19,7 +19,7 @@ The slider has been created by https://refreshless.com/nouislider/
 ## API methods:
 
 ### GET /api/ads:
-`/api/ads?skip=0&limit=10&type=Venta&tag=Electronica&price[$gte]=50&price[$lte]=125&sort=-price`
+`GET /api/ads?skip=0&limit=10&type=Venta&tag=Electronica&price[$gte]=50&price[$lte]=125&sort=-price`
 Get list of ads with opcional parameters:
 
 #### filter by entries for pagination:
