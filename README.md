@@ -48,3 +48,7 @@ Will return documents with title containing the string provided
 `GET /api/ads?sort=-price`
 Will return documents sorted by price, high to low.
 
+
+### GET /api/tags
+`GET /api/tags`
+Get list of all tags
