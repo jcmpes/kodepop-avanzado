@@ -15,5 +15,9 @@
     "http-errors": "~1.6.3",
     "mongoose": "^5.11.14",
     "morgan": "~1.9.1"
+  },
+  "devDependencies": {
+    "eslint": "^7.19.0",
+    "eslint-config-google": "^0.14.0"
   }
 }
