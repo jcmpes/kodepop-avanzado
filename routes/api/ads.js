@@ -25,35 +25,35 @@ const Ad = require('../../models/Ad');
  * 
  */
 router.get('/', async function(req, res, next) {
-    try {
-        const price = req.query.price;  
-        const title = req.query.title;
-        const tag = req.query.tag;
-        const type = req.query.type;
-        const filter = {};
-        if (type) {
-            filter.type = type;
-        }
-        if (tag) {
-            filter.tags = tag;
-        }
-        if (title) {
-            filter.title = new RegExp(title, "i");
-        }
-        if (price) {
-            filter.price = price;
-        }
-        const limit = parseInt(req.query.limit);
-        const skip = parseInt(req.query.skip);
-        const sort = req.query.sort;
-        const result = await Ad.filterAndList(filter, limit, skip, sort);
-        if(result[0] == null) {
-            return res.status(404).json({ error: 'ads not found'});
-        }
-        res.json(result);
-    } catch (err) {
-        next(err);
+  try {
+    const price = req.query.price;  
+    const title = req.query.title;
+    const tag = req.query.tag;
+    const type = req.query.type;
+    const filter = {};
+    if (type) {
+      filter.type = type;
     }
+    if (tag) {
+      filter.tags = tag;
+    }
+    if (title) {
+      filter.title = new RegExp(title, "i");
+    }
+    if (price) {
+      filter.price = price;
+    }
+    const limit = parseInt(req.query.limit);
+    const skip = parseInt(req.query.skip);
+    const sort = req.query.sort;
+    const result = await Ad.filterAndList(filter, limit, skip, sort);
+    if(result[0] == null) {
+      return res.status(404).json({ error: 'ads not found'});
+    }
+    res.json(result);
+  } catch (err) {
+    next(err);
+  }
 });
 
 /**
@@ -61,17 +61,17 @@ router.get('/', async function(req, res, next) {
  * GET /api/ads/:id
  */
 router.get('/:id', async(req, res, next) => {
-    try {
-        const _id = req.params.id;
-        const ad = await Ad.findOne({ _id: _id });
-        if(!ad) {
-            res.status(404).json({ error: 'ad not found'});
-            return;
-        }
-        res.json({ result: ad })
-    } catch (err) {
-        next(err);
+  try {
+    const _id = req.params.id;
+    const ad = await Ad.findOne({ _id: _id });
+    if(!ad) {
+      res.status(404).json({ error: 'ad not found'});
+      return;
     }
+    res.json({ result: ad })
+  } catch (err) {
+    next(err);
+  }
 })
 
 
