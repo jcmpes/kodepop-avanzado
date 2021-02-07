@@ -52,3 +52,9 @@ Will return documents sorted by price, high to low.
 ### GET /api/tags
 `GET /api/tags`
 Get list of all tags
+
+
+### POST /api/ads
+`POST /api/ads`
+Create a new ad sending the details in the body as x-www-form-urlencoded
+
