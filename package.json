@@ -4,7 +4,8 @@
   "private": true,
   "scripts": {
     "start": "node ./bin/www",
-    "dev": "cross-env PORT=3000 NODE_ENV=development DEBUG=keepads:* nodemon"
+    "dev": "cross-env PORT=3000 NODE_ENV=development DEBUG=keepads:* nodemon",
+    "initdb": "node ./lib/initialize_db.js"
   },
   "dependencies": {
     "cookie-parser": "~1.4.4",
