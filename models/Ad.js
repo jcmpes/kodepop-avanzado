@@ -4,12 +4,12 @@ const mongoose = require('mongoose');
 
 // Define schema
 const adSchema = mongoose.Schema({
-  title: { type: String },
+  title: { type: String, createIndexes: true },
   description: String,
-  price: Number,
-  type: String,
+  price: { type: Number, createIndexes: true },
+  type: { type: String, createIndexes: true },
   img: String,
-  tags: [String]
+  tags: { type: [String], createIndexes: true }
 });
 
 // Mongoose model static method

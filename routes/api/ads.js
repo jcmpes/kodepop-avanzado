@@ -65,7 +65,7 @@ router.get('/:id', async(req, res, next) => {
     const _id = req.params.id;
     const ad = await Ad.findOne({ _id: _id });
     if(!ad) {
-      res.status(404).json({ error: 'ad not found'});
+      res.status(404).json({error: 'ad not found'});
       return;
     }
     res.json({ result: ad })
