@@ -32,7 +32,7 @@ app.use('/users', require('./routes/users'));
  * API Routes
  */
 app.use('/api/authenticate', require('./routes/api/authenticate'))
-app.use('/api/ads', require('./routes/api/ads'));
+app.use('/api/anuncios', require('./routes/api/ads'));
 app.use('/api/tags', require('./routes/api/tags'));
 
 // catch 404 and forward to error handler

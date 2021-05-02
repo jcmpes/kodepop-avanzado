@@ -1,7 +1,7 @@
 var express = require('express');
 var router = express.Router();
-
 const Ad = require('../../models/Ad');
+const JWTAuth = require('../../lib/JWTAuth')
 
 /**
  * Lista de agentes
@@ -24,7 +24,8 @@ const Ad = require('../../models/Ad');
  * GET /api/ads?sort=price
  * 
  */
-router.get('/', async function(req, res, next) {
+router.get('/', JWTAuth, async function(req, res, next) {
+
   try {
     const price = req.query.price;  
     const title = req.query.title;
