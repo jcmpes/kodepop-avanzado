@@ -26,7 +26,7 @@ describe('API Authentication', () => {
             .send(userObj)
         const token = res.body.token;
         const header = token.split('.')[0];
-        const headerDecoded  = Buffer.from(header, 'base64').toString()
+        const headerDecoded = Buffer.from(header, 'base64').toString()
         const headerAsJSON = JSON.parse(headerDecoded)
         expect(headerAsJSON).toHaveProperty('typ')
     })

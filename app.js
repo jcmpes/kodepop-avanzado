@@ -31,7 +31,7 @@ app.use('/users', require('./routes/users'));
 /**
  * API Routes
  */
-app.post('/api/authenticate', require('./controllers/apiAuthController'))
+app.use('/api/authenticate', require('./routes/api/authenticate'))
 app.use('/api/ads', require('./routes/api/ads'));
 app.use('/api/tags', require('./routes/api/tags'));
 

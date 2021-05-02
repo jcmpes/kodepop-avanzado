@@ -1,14 +1,14 @@
 const jwt = require('jsonwebtoken');
 const User = require('../models/User');
+const express = require('express');
+const router = express.Router();
 
-/**
- * POST /api/authenticate
- */
-const apiAuthController = async (req, res, next) => {
+const apiAuthController = async (req, res, next) =>  { 
     // Check credentials
     try {
         const { email, password } = req.body
         const user = await User.findOne({ email })
+        console.log(user)
         if (!user || !(await user.comparePassword(password))) {
             throw('invalid credentials')
         }
@@ -25,4 +25,4 @@ const apiAuthController = async (req, res, next) => {
     }
 }
 
-module.exports = apiAuthController
+module.exports = apiAuthController;

@@ -1,7 +1,11 @@
 const express = require('express');
 const router = express.Router(); 
-const jwt = require('jsonwebtoken');
+const apiAuthController = require('../../controllers/apiAuthController')
 
-router.post('/authenticate', (req, res, next) => {
-    
+/**
+ * POST /api/authenticate
+ */
+router.post('/',  async (req, res, next) => {
+    apiAuthController(req, res, next);
 })
+module.exports = router;
