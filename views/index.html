@@ -8,17 +8,18 @@
   <body>
     <header>
       <h1><%= title %></h1>
-      <p>Welcome to <%= title %></p>
+      <p><%= __('Bienvenid@ a') %> <%= title %></p>
     </header>
     <div class="container">
       <section>
         <% if(ads[0] == null) {%>
-          <p>We have looked everywhere but no ads were found</p>
-          <a href="/">Return home</a>
+          <p><%= __('Hemos mirado en todas partes y no hemos encontrado anuncios') %> </p>
+          <a href="/"><%= __('Volver a inicio') %> </a>
         <% } %>
         <div class="ads-list">
-          
-          <h2>Lista de anuncios</h2>
+          <% if(ads[0] != null) {%>
+            <h2><%= __('Lista de anuncios') %> </h2>
+          <% } %>
 
           <ul class="item-list">
             <% for (ad of ads) { %>
@@ -39,22 +40,27 @@
         </div>
       </section>
       <section>
+        <div class="locale-select" style="float: right;">
+          <% getLocales().forEach(locale => { %> 
+            <a href="change-locale/<%= locale %>"><%= locale %>&nbsp;</a>
+          <% }) %> 
+        </div>
         <div class="filters-list">
-          <h2 id="filtros">Filtros</h2>
-          <h3>Precio</h3>
+          <h2 id="filtros"><%= __('Filtros') %> </h2>
+          <h3><%= __('Precio') %></h3>
           <div id="slider"></div>
           <div id="slider-snap-value-lower"></div>
           <div id="slider-snap-value-upper"></div>
           
-          <h3>Tipo de anuncio</h3>
+          <h3><%= __('Tipo de anuncio') %></h3>
           <select name="select" id="select">
-            <option value="Venta">Venta</option>
-            <option value="Compra">Compra</option>
+            <option value="Venta"><%= __('Venta') %></option>
+            <option value="Compra"><%= __('Compra') %></option>
           </select>
           
           <div class="btn-submit">
             <a id="link-filter" href="">
-              <button id="btn-filter">Submit</button>
+              <button id="btn-filter"><%= __('Buscar') %></button>
             </a>
           </div>
           

@@ -21,12 +21,19 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
+
+/**
+ * i18n Setup
+ */
+const i18n = require('./lib/i18nConfig');
+app.use(i18n.init);
+
 /**
  * WEB Routes
  */
-
 app.use('/', require('./routes/index'));
 app.use('/users', require('./routes/users'));
+app.use('/change-locale', require('./routes/change-locale'));
 
 /**
  * API Routes
