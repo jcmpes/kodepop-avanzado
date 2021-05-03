@@ -7,6 +7,11 @@
   </head>
   <body>
     <header>
+      <div class="locale-select" style="float: right;">
+        <% getLocales().forEach(locale => { %> 
+          <a href="change-locale/<%= locale %>"><%= locale %>&nbsp;</a>
+        <% }) %>
+      </div>
       <h1><%= title %></h1>
       <p><%= __('Bienvenid@ a') %> <%= title %></p>
     </header>
@@ -40,11 +45,6 @@
         </div>
       </section>
       <section>
-        <div class="locale-select" style="float: right;">
-          <% getLocales().forEach(locale => { %> 
-            <a href="change-locale/<%= locale %>"><%= locale %>&nbsp;</a>
-          <% }) %> 
-        </div>
         <div class="filters-list">
           <h2 id="filtros"><%= __('Filtros') %> </h2>
           <h3><%= __('Precio') %></h3>
