@@ -1,10 +1,11 @@
 var express = require('express');
 var router = express.Router();
 const Ad = require('../../models/Ad');
-const JWTAuth = require('../../lib/JWTAuth')
+const JWTAuth = require('../../lib/JWTAuth');
+const multer = require('multer');
 
 /**
- * Lista de agentes
+ * Lista de anuncios con opciones de filtrado
  * GET /api/ads
  * 
  * Lista de agentes con paginación
@@ -25,7 +26,6 @@ const JWTAuth = require('../../lib/JWTAuth')
  * 
  */
 router.get('/', JWTAuth, async function(req, res, next) {
-
   try {
     const price = req.query.price;  
     const title = req.query.title;
@@ -75,16 +75,27 @@ router.get('/:id', async(req, res, next) => {
   }
 })
 
+/**
+ * Configurar multer
+ */
+const upload = multer({
+  dest: "public/images/"
+})
+
 /** 
  * Crear un anuncio (body)
  * POST /api/ads
  */
-router.post('/', async (req, res, next) => {
+router.post('/', upload.single('img'), async (req, res, next) => {
     try {
         const adData = req.body
-        
+        const image = req.file
         const ad = new Ad(adData);
-
+        // Add image path to ad
+        if (image) {
+          ad.img = '/images/' + image.filename
+        }
+        console.log(ad)
         const newAd = await ad.save();
 
         res.status(201).json({ result: newAd });
@@ -108,6 +119,10 @@ router.delete('/:id', async(req, res, next) => {
         next(err)
     }
 })
+
+/**
+ * Subida de imagen
+ */
 
 
 module.exports = router;
