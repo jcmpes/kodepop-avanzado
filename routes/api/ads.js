@@ -96,18 +96,20 @@ router.post('/', upload.single('img'), async (req, res, next) => {
         if (image) {
           ad.img = '/images/' + image.filename
         }
-        const newAd = await ad.save();
         
         // Enviar ruta de la imagen por cote a i-resize-u
         const requester = new cote.Requester({ name: "gimme-thumbnail" });
         const request = { type: 'resize', img: image.filename }
         console.log('request', request)
-        requester.send(request, res => {
-          console.log('response:', res)
-        });
+        requester.send(request, async routeToThumb => {
+          console.log('thumbnail route:', routeToThumb)
+          ad.img = routeToThumb;
+          const newAd = await ad.save();
+          res.status(201).json({ result: newAd });
+          return
+        })
         
 
-        res.status(201).json({ result: newAd });
     } catch (err) {
         next(err)
     }
