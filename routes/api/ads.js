@@ -3,6 +3,7 @@ var router = express.Router();
 const Ad = require('../../models/Ad');
 const JWTAuth = require('../../lib/JWTAuth');
 const multer = require('multer');
+const cote = require('cote');
 
 /**
  * Lista de anuncios con opciones de filtrado
@@ -91,12 +92,20 @@ router.post('/', upload.single('img'), async (req, res, next) => {
         const adData = req.body
         const image = req.file
         const ad = new Ad(adData);
-        // Add image path to ad
+        // Agreagar la ruta de la imagen al objeto ad
         if (image) {
           ad.img = '/images/' + image.filename
         }
-        console.log(ad)
         const newAd = await ad.save();
+        
+        // Enviar ruta de la imagen por cote a i-resize-u
+        const requester = new cote.Requester({ name: "gimme-thumbnail" });
+        const request = { type: 'resize', img: image.filename }
+        console.log('request', request)
+        requester.send(request, res => {
+          console.log('response:', res)
+        });
+        
 
         res.status(201).json({ result: newAd });
     } catch (err) {
