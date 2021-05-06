@@ -128,10 +128,6 @@ router.post('/', upload.single('img'), async (req, res, next) => {
   } catch(error) {
     next(error)
   }
-  
-
-  // console.log('response:', response)
-
 })
 
 /**
