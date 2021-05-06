@@ -1,0 +1,16 @@
+{
+  "name": "i-resize-u",
+  "version": "1.0.0",
+  "description": "Image resizer in express using sharp",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" ",
+    "start": "node index.js"
+  },
+  "author": "JC",
+  "license": "ISC",
+  "dependencies": {
+    "cote": "^1.0.2",
+    "sharp": "^0.28.1"
+  }
+}
