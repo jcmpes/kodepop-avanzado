@@ -1,7 +1,6 @@
 const request = require('supertest');
 const app = require('../app');
 
-const apiAuthController = require('./apiAuthController');
 const userObj = {
     email: 'user@example.com',
     password: '1234'

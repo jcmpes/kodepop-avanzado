@@ -13,7 +13,6 @@ const apiAuthController = async (req, res, next) =>  {
             throw('invalid credentials')
         }
         // Generate Token
-        console.log(process.env.JWT_TOKEN_SECRET)
         jwt.sign({ _id: user._id }, process.env.JWT_TOKEN_SECRET, { expiresIn: '1h'}, (err, jwtToken) => {
             if (err) {
                 next(err);
