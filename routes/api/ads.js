@@ -110,13 +110,27 @@ router.post('/', upload.single('img'), async (req, res, next) => {
   const ad = new Ad(adData);
   
   // Enviar ruta de la imagen por cote a i-resize-u
-  const requester = new cote.Requester({ name: "gimme-thumbnail", timeout: 6000 });
+  const requester = new cote.Requester({ name: "gimme-thumbnail", timeout: 8000 });
   const request = { type: 'resize', img: image.filename };
-  const response = await requester.send(request);
+  try {
+    await requester.send(request, async response => {
+      // Manejar error de timout
+      if(response != "Error: Request timed out.") {
+        ad.img = response;
+      } else {
+        // Timeout error
+        ad.img = PLACEHOLDER_IMAGE
+        console.log(response)
+      }
+      const newAd = await ad.save();
+      res.status(201).json({ result: newAd });
+    })
+  } catch(error) {
+    next(error)
+  }
+  
+
   // console.log('response:', response)
-  ad.img = response;
-  const newAd = await ad.save();
-  res.status(201).json({ result: newAd });
 
 })
 
