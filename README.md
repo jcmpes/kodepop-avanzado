@@ -1,3 +1,7 @@
+# Deployed at AWS:
+Node app + thumbnail generator microservice: http://ec2-50-17-153-102.compute-1.amazonaws.com/
+React app + nodepop-api: http://50.17.153.102/ (user: jcmpes@gmail.com pass: 123)
+
 # keepads-avanzado
 
 Keepads is a simple project for the Introduction to Backend module of Keepconding's X Web Bootcamp.
@@ -28,32 +32,38 @@ You can also apply a type-of-ad filter to show only buy or sell ads.
 
 ## API methods:
 
-### GET /api/ads:
+### POST /api/authenticate:
+Send as x-www-form-urlencoded these credentials:
+email: user@example.com
+password: 1234
+The api will return a JWToken that expires within 1 hour.
+
+### GET /api/anuncios:
 `GET /api/ads?skip=0&limit=10&type=Venta&tag=Electronica&price[$gte]=50&price[$lte]=125&sort=-price`
 Get list of ads with opcional parameters:
 
 #### filter by entries for pagination:
-`GET /api/ads?skip=10&limit=10`
+`GET /api/anuncios?skip=10&limit=10`
 Will return documents 11 up until 21.
 
 #### filter by type (compra or venta)
-`GET /api/ads?type=Venta`
+`GET /api/anuncios?type=Venta`
 Will return only documents of type "Venta".
 
 #### filter by tag:
-`GET /api/ads?tag=Electronica`
+`GET /api/anuncios?tag=Electronica`
 Will return documents with tag "Electronica".
 
 #### filter by price:
-`GET /api/ads?price[$gte]=50&price[$lte]=150`
+`GET /api/anuncios?price[$gte]=50&price[$lte]=150`
 Will return documents with price between 50 and 150.
 
 #### filter by name:
-`GET /api/ads?title=iPhone`
+`GET /api/anuncios?title=iPhone`
 Will return documents with title containing the string provided
 
 #### sort:
-`GET /api/ads?sort=-price`
+`GET /api/anuncios?sort=-price`
 Will return documents sorted by price, high to low
 
 
@@ -63,9 +73,9 @@ Get list of all tags
 
 
 ### POST /api/ads
-`POST /api/ads`
+`POST /api/anuncios`
 Create a new ad sending the details in the body as x-www-form-urlencoded
 
-### DELETE /api/agentes:id
-`DELETE /api/ads/6020688e2ba28a3b851b08bd`
+### DELETE /api/anuncios/:id
+`DELETE /api/anuncios/6020688e2ba28a3b851b08bd`
 Removes the document with _id 6020688e2ba28a3b851b08bd from the database
