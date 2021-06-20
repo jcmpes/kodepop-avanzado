@@ -1,6 +1,9 @@
 # Deployed at AWS:
 Node app + thumbnail generator microservice: http://ec2-50-17-153-102.compute-1.amazonaws.com/
+
 React app + nodepop-api: http://50.17.153.102/ (user: jcmpes@gmail.com pass: 123)
+
+EXTRA: Django app + SQL DB: http://elearning.bodasjc.com/ (you may register a new user)
 
 # keepads-avanzado
 
